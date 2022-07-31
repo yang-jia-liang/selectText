@@ -213,8 +213,12 @@
   }
 
   // 选中状态颜色
-  ::-moz-selection:extend(.yellow) {}
-  ::selection:extend(.yellow) {}
+  ::-moz-selection {
+      background: rgba(222,255,0,0.75);
+  }
+  ::selection {
+      background: rgba(222,255,0,0.75);
+  }
 </style>
 <style lang="less" scoped>
     .el-button {
@@ -224,8 +228,4 @@
     .el-button + .el-button {
         margin-left: 0;
     }
-
-    /*.el-tooltip__trigger:last-of-type {*/
-    /*    margin-left: 12px;*/
-    /*}*/
 </style>
