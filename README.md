@@ -7,4 +7,5 @@
 - 不能消除已添加的标签
 - 选中的文本和已经有标签的文本重叠时，添加标注会报错
 
-
+# 在线预览
+https://yang-jia-liang.github.io/selectText/
