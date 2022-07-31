@@ -21,7 +21,7 @@ git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:<BranchName>
-git push -f git@github.com:yang-jia-liang/face-api.js.git master:gh-pages
+git push -f git@github.com:yang-jia-liang/selectText.git master:gh-pages
 
 cd -
 
