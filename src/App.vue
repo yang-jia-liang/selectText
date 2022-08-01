@@ -241,6 +241,8 @@
         vertical-align: initial;
         position: relative;
         font-size: inherit;
+        text-decoration: underline dotted;
+        cursor: help;
 
         &::before {
             content: attr(comment);
@@ -251,22 +253,33 @@
             font-size: 12px;
             font-weight: bold;
             width: max-content;
+            visibility: hidden;
+        }
+        &:hover::before {
+            visibility: visible;
         }
     }
     sub {
         vertical-align: initial;
         position: relative;
         font-size: inherit;
+        text-decoration: underline dotted;
+        cursor: help;
 
-        &::before {
+        &::after {
             content: attr(comment);
             color: #cc0000;
             position: absolute;
-            top: 14px;
+            top: 15px;
+            left: 0;
             font-family: 'Rock Salt', cursive;
             font-size: 12px;
             font-weight: bold;
             width: max-content;
+            visibility: hidden;
+        }
+        &:hover::after {
+            visibility: visible;
         }
     }
 
