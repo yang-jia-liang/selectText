@@ -41,6 +41,15 @@
             </el-dropdown-menu>
         </template>
     </el-dropdown>
+    <el-dropdown @visible-change="visibleChange" @command="addProtect">
+        <el-button type="primary" :disabled="!isEdit">隐私</el-button>
+        <template #dropdown>
+            <el-dropdown-menu>
+                <el-dropdown-item command="blur">模糊</el-dropdown-item>
+                <el-dropdown-item command="black">涂黑</el-dropdown-item>
+            </el-dropdown-menu>
+        </template>
+    </el-dropdown>
 
     <el-tooltip content="谷歌不支持选中多组文字，火狐可以" placement="top">
         <el-dropdown @command="showAllTags" style="margin-left: 12px;">
@@ -71,7 +80,7 @@
 </template>
 
 <script setup>
-    import { ElMessage, ElMessageBox } from 'element-plus';
+    import { ElMessageBox } from 'element-plus';
     import { reactive, toRefs } from 'vue';
 
     const state = reactive({
@@ -164,6 +173,15 @@
 
             })
     };
+
+    const addProtect = (type) => {
+        const selectRange = tempSelectRange;
+        const spanTag = document.createElement("span");
+
+        spanTag.className += type;
+
+        selectRange.surroundContents(spanTag);
+    }
 </script>
 
 <style lang="less">
@@ -204,6 +222,17 @@
         border-radius: 50%;
         border-width: medium thin thick 10px;
     }
+
+    .blur {
+        filter: blur(10px);
+        user-select: none;
+    }
+    .black {
+        background-color: black;
+        color: transparent;
+        user-select: none;
+    }
+
 
     del {
         text-decoration: none;
