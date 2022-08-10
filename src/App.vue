@@ -2,6 +2,7 @@
     <h1 >Diginotes</h1>
 
     <el-button type="primary" :disabled="!isEdit" @click="addCircle">圆圈</el-button>
+    <el-button type="primary" :disabled="!isEdit" @click="addFold">折叠</el-button>
     <el-dropdown @visible-change="visibleChange" @command="addMark">
         <el-button type="primary" :disabled="!isEdit">高亮</el-button>
         <template #dropdown>
@@ -76,6 +77,8 @@
         </mark>
         Alex approximately Isobel Meredith's father Jackson obviously a surgical resident really
         Alex <sup comment="1234">approximately</sup> Isobel Meredith's father Jackson obviously a surgical resident really
+
+        <span class="fold">Alex approximately Isobel Meredith's father </span>
     </p>
 </template>
 
@@ -181,6 +184,14 @@
         spanTag.className += type;
 
         selectRange.surroundContents(spanTag);
+    }
+
+    const addFold = () => {
+        const selectRange = window.getSelection().getRangeAt(0);
+        const foldTag = document.createElement("span");
+        foldTag.className = 'fold';
+
+        selectRange.surroundContents(foldTag);
     }
 </script>
 
@@ -309,6 +320,26 @@
         }
         &:hover::after {
             visibility: visible;
+        }
+    }
+
+    .fold {
+        background-color: rgba(231, 76, 60,.5);
+        display: inline-flex;
+        position: relative;
+        width: 10px;
+        height: 30px;
+        text-indent: 10px;
+        overflow: hidden;
+        transition: all .3s;
+
+
+        &:hover {
+            width: auto;
+            text-indent: 0;
+            padding: 0 10px 0 10px;
+            display: inline;
+            transition: all 1s;
         }
     }
 
